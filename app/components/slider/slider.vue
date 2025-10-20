@@ -752,16 +752,13 @@ section.default-center-left-center-mt-0px-p-0px .img img {
   transition-delay: 0.2s, 0.2s;
 }
 
-.slide-wrapper.active .slide figcaption{
-  &:hover {
+.slide-wrapper.active .slide figcaption:hover{
     overflow: hidden auto;
-  }
 }
-
 .slide figcaption {
   scrollbar-gutter: stable;
   height: 100%;
-  max-height: 250px;
+  max-height: 100%;
   overflow: hidden;
 }
 
@@ -1021,7 +1018,6 @@ section.default-center-left-center-mt-0px-p-0px .img img {
 .slider.is-maximized .slide figcaption {
   max-height: 100%;
   scrollbar-gutter: none;
-  overflow: unset;
 }
 
 .slider.is-maximized .slide-wrapper {
@@ -1071,6 +1067,15 @@ section.default-center-left-center-mt-0px-p-0px .img img {
 .slider.is-maximized.sliderid-cards .slide-wrapper.active .slide {
   max-height: 45vh;
   z-index: 2;
+}
+.slider.is-maximized.sliderid-cards .slide-wrapper.active .slide {
+  max-height: 60vh;
+  z-index: 2;
+}
+.slider.is-maximized.sliderid-cards .slide-wrapper.active .slide::after {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
 }
 
 .slider.is-maximized.sliderid-cards .slide-wrapper.active:hover .slide {
