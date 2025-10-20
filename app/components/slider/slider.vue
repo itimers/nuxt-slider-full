@@ -662,7 +662,6 @@ section.default-center-left-center-mt-0px-p-0px .img img {
 .slider {
   position: relative;
   width: 100%;
-  height: 100%;
   --slide-transition: 0.5s;
   transition: all 0.3s ease;
 }
@@ -683,10 +682,7 @@ section.default-center-left-center-mt-0px-p-0px .img img {
 }
 
 .slides-container {
-  position: relative;
   cursor: default;
-  width: 100%;
-  height: 100%;
 }
 
 .slides-container.is-dragging {
