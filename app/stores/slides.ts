@@ -586,46 +586,61 @@ export const useSlidesStore = defineStore("slides", () => {
       updateSlides(id);
     }
   };
+
   const toggleMaximizeBoth = (pId: string, sId: string) => {
-    const pInst = getSlider(pId), sInst = getSlider(sId);
+    const pInst = getSlider(pId);
+    const sInst = getSlider(sId);
+
     pInst.isMaximized = !pInst.isMaximized;
     sInst.isMaximized = pInst.isMaximized;
 
     const cardsId = pId === "cards" ? pId : sId === "cards" ? sId : null;
-    if (cardsId) {
-      const cardsInst = getSlider(cardsId);
-      if (cardsInst.isMaximized) {
-        if (cardsInst.originalMinSlides === null) cardsInst.originalMinSlides = cardsInst.minSlides;
-        if (cardsInst.originalMaxSlides === null) cardsInst.originalMaxSlides = cardsInst.maxSlides;
-        if (cardsInst.originalActiveSlideOn === null) cardsInst.originalActiveSlideOn = cardsInst.activeSlideOn;
-        if (cardsInst.originalSlidesPerView === null) cardsInst.originalSlidesPerView = cardsInst.slidesPerView;
-        if (cardsInst.originalCurrentSlideId === null) {
-          const activeSlide = cardsInst.slides.find(s => s.active);
-          cardsInst.originalCurrentSlideId = activeSlide?.id ?? 1;
-        }
+    if (!cardsId) return;
 
-        cardsInst.slidesPerView = 8;
-        cardsInst.slideWidth = 100 / 8;
-        cardsInst.minSlides = 0;
-        cardsInst.maxSlides = 12;
-        cardsInst.activeSlideOn = 5;
-
-        setCurrentSlideById(cardsId, 1);
-      } else {
-        if (cardsInst.originalMinSlides !== null) cardsInst.minSlides = cardsInst.originalMinSlides;
-        if (cardsInst.originalMaxSlides !== null) cardsInst.maxSlides = cardsInst.originalMaxSlides;
-        if (cardsInst.originalActiveSlideOn !== null) cardsInst.activeSlideOn = cardsInst.originalActiveSlideOn;
-        if (cardsInst.originalSlidesPerView !== null) {
-          cardsInst.slidesPerView = cardsInst.originalSlidesPerView;
-          cardsInst.slideWidth = 100 / cardsInst.originalSlidesPerView;
-        }
-        if (cardsInst.originalCurrentSlideId !== null) {
-          setCurrentSlideById(cardsId, cardsInst.originalCurrentSlideId);
-        }
+    const cardsInst = getSlider(cardsId);
+    const activeSlide = cardsInst.slides.find(s => s.active);
+    const currentId = activeSlide ? activeSlide.id : cardsInst.currentSlide || 1;
+    if (cardsInst.isMaximized) {
+      if (cardsInst.originalMinSlides === null) cardsInst.originalMinSlides = cardsInst.minSlides;
+      if (cardsInst.originalMaxSlides === null) cardsInst.originalMaxSlides = cardsInst.maxSlides;
+      if (cardsInst.originalActiveSlideOn === null) cardsInst.originalActiveSlideOn = cardsInst.activeSlideOn;
+      if (cardsInst.originalSlidesPerView === null) cardsInst.originalSlidesPerView = cardsInst.slidesPerView;
+      if (cardsInst.originalCurrentSlideId === null) {
+        const activeSlide = cardsInst.slides.find(s => s.active);
+        cardsInst.originalCurrentSlideId = activeSlide?.id ?? cardsInst.currentSlide ?? 1;
       }
-      updateSlides(cardsId);
+
+
+
+      cardsInst.slidesPerView = 8;
+      cardsInst.slideWidth = 100 / 8;
+      cardsInst.minSlides = 0;
+      cardsInst.maxSlides = 12;
+      cardsInst.activeSlideOn = 5;
+
+      setCurrentSlideById(cardsId, currentId);
+      if (sId !== cardsId) setCurrentSlideById(sId, currentId);
+
+    } else {
+      if (cardsInst.originalMinSlides !== null) cardsInst.minSlides = cardsInst.originalMinSlides;
+      if (cardsInst.originalMaxSlides !== null) cardsInst.maxSlides = cardsInst.originalMaxSlides;
+      if (cardsInst.originalActiveSlideOn !== null) cardsInst.activeSlideOn = cardsInst.originalActiveSlideOn;
+      if (cardsInst.originalSlidesPerView !== null) {
+        cardsInst.slidesPerView = cardsInst.originalSlidesPerView;
+        cardsInst.slideWidth = 100 / cardsInst.originalSlidesPerView;
+      }
+
+      if (currentId !== null) {
+        setCurrentSlideById(cardsId, currentId);
+        if (sId !== cardsId) setCurrentSlideById(sId, currentId);
+      }
     }
+
+    updateSlides(cardsId);
+    if (sId !== cardsId) updateSlides(sId);
   };
+
+
 
   const initializeSliderRef = (id: string) => {
     if (typeof window === 'undefined') return;
