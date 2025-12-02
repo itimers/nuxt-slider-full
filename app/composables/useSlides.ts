@@ -1,7 +1,7 @@
-const img = "/img/slider/1.webp";
-const img2 = "/img/slider/3.webp";
-const img3 = "/img/slider/5.webp";
-const img4 = "/img/slider/7.webp";
+const img = "img/slider/1.webp";
+const img2 = "img/slider/3.webp";
+const img3 = "img/slider/5.webp";
+const img4 = "img/slider/7.webp";
 
 interface Slide {
   id: number;
