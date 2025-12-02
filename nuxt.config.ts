@@ -1,6 +1,6 @@
 //@ts-ignore
 const isProd = process.env.NODE_ENV === 'production'
-const base = isProd ? '/nuxt-cookie-system/' : '/'
+const base = isProd ? '/nuxt-full-slider/' : '/'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
