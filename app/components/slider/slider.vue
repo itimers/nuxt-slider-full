@@ -38,7 +38,11 @@ const props = withDefaults(defineProps<Props>(), {
   activeSlideOn: 5,
 });
 
-const sm = useSlidesStore();
+//^ COMPOSABLE SLIDER
+const sm = useSlides();
+
+//* PINIA SLIDER
+//! const sm = useSlidesStore();
 const id = computed(() => props.instanceId);
 const getS = () => sm.getSlider(id.value);
 const slides = computed(() => getS().slides);
