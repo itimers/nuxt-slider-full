@@ -2,7 +2,10 @@
 
 > 🚀 Napredni, potpuno prilagodljiv slider sa sinhronizacijom, drag & drop funkcionalnostima i modernim UI/UX dizajnom.
 
+
 **📖 Srpska verzija | [English](README.md)**
+
+**🌐 [Live Demo](https://itimers.github.io/nuxt-slider-full/)**
 
 ---
 

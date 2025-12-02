@@ -2,11 +2,18 @@
 
 > 🚀 Advanced, fully customizable slider with synchronization, drag & drop functionality, and modern UI/UX design.
 
+
+**📖 [Srpska verzija](README.sr.md) | English**
+
+**🌐 [Live Demo](https://itimers.github.io/nuxt-slider-full/)**
+
+---
+
 ## ✨ About the Project
 
 This project represents a **professional slider system** developed in **Nuxt 3** with **TypeScript** and **Pinia** state management. The slider supports **synchronization between multiple instances**, **drag & drop**, **touch events**, **dynamic animations**, and many other advanced features.
 
----
+
 
 ## 🎯 Key Features
 

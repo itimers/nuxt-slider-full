@@ -2,7 +2,10 @@
 
 > 🚀 Advanced, fully customizable slider with synchronization, drag & drop functionality, and modern UI/UX design.
 
+
 **📖 [Srpska verzija](README.sr.md) | English**
+
+**🌐 [Live Demo](https://itimers.github.io/nuxt-slider-full/)**
 
 ---
 
